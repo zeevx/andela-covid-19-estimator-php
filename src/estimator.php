@@ -12,13 +12,13 @@ function covid19ImpactEstimator($data)
   }
 
 
-  if ($data->periodType === 'days') {
+  if ($data->periodType == 'days') {
     $numberOfDays = $data->timeToElapse;
   } 
-  else if ($data->periodType === 'weeks') {
+  else if ($data->periodType == 'weeks') {
     $numberOfDays = 7 * $data->timeToElapse;
   }
-  if ($data->periodType === 'months') {
+  if ($data->periodType == 'months') {
     $numberOfDays = 30 * $data->timeToElapse;
   }
 
