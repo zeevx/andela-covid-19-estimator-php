@@ -3,14 +3,14 @@
 function covid19ImpactEstimator($data)
 {
 
-  class impactClass{
-      public $impact = "";
+  class impact{
+      public $iimpact = "";
   }
 
 
-  class severeImpactClass{
+  class severeImpact{
 
-      public $severeImpact = "";
+      public $ssevereImpact = "";
   }
 
 
@@ -24,39 +24,39 @@ function covid19ImpactEstimator($data)
     $numberOfDays = 30 * $data->timeToElapse;
   }
 
-  $impact->currentlyInfected = $data->reportedCases * 10;
+  $iimpact->currentlyInfected = $data->reportedCases * 10;
 
-  $severeImpact->currentlyInfected = $data->reportedCases * 50;
+  $ssevereImpact->currentlyInfected = $data->reportedCases * 50;
 
   $ipower = $numberOfDays / 3;
 
   $spower = $numberOfDays / 3;
 
-  $impact->infectionsByRequestedTime = $data->currentlyInfected * (2**$ipower);
+  $iimpact->infectionsByRequestedTime = $data->currentlyInfected * (2**$ipower);
 
-  $severeImpact->infectionsByRequestedTime = $data->currentlyInfected * (2**$spower);
+  $ssevereImpact->infectionsByRequestedTime = $data->currentlyInfected * (2**$spower);
 
-  $impact->severeCasesByRequestedTime = 0.15 * $impact->infectionsByRequestedTime;
+  $iimpact->severeCasesByRequestedTime = 0.15 * $iimpact->infectionsByRequestedTime;
 
-  $severeImpact->severeCasesByRequestedTime = 0.15 * $severeImpact->infectionsByRequestedTime;
+  $ssevereImpact->severeCasesByRequestedTime = 0.15 * $ssevereImpact->infectionsByRequestedTime;
 
   $bedAvailable = 0.35 * $data->totalHospitalBeds;
 
-  $impact->hospitalBedsByRequestedTime = intval($bedAvailable - $impact->severeCasesByRequestedTime);
+  $iimpact->hospitalBedsByRequestedTime = intval($bedAvailable - $iimpact->severeCasesByRequestedTime);
 
-  $severeImpact->hospitalBedsByRequestedTime = intval($bedAvailable - $severeImpact->severeCasesByRequestedTime);
+  $ssevereImpact->hospitalBedsByRequestedTime = intval($bedAvailable - $ssevereImpact->severeCasesByRequestedTime);
 
-  $impact->casesForICUByRequestedTime = 0.05 * $impact->infectionsByRequestedTime;
+  $iimpact->casesForICUByRequestedTime = 0.05 * $iimpact->infectionsByRequestedTime;
 
-  $severeImpact->casesForICUByRequestedTime = 0.05 * $severeImpact->infectionsByRequestedTime;
+  $ssevereImpact->casesForICUByRequestedTime = 0.05 * $ssevereImpact->infectionsByRequestedTime;
 
-  $impact->casesForVentilatorsByRequestedTime = 0.02 * $impact->infectionsByRequestedTime;
+  $iimpact->casesForVentilatorsByRequestedTime = 0.02 * $iimpact->infectionsByRequestedTime;
 
-  $severeImpact->casesForVentilatorsByRequestedTime = 0.02 * $severeImpact->infectionsByRequestedTime;
+  $ssevereImpact->casesForVentilatorsByRequestedTime = 0.02 * $ssevereImpact->infectionsByRequestedTime;
 
-  $impact->dollarsInFlight = ($impact->infectionsByRequestedTime * 0.65) * 1.5 * $numberOfDays;
+  $iimpact->dollarsInFlight = ($iimpact->infectionsByRequestedTime * 0.65) * 1.5 * $numberOfDays;
 
-  $severeImpact->dollarsInFlight = ($severeImpact->infectionsByRequestedTime * 0.65) * 1.5 * $numberOfDays;
+  $ssevereImpact->dollarsInFlight = ($ssevereImpact->infectionsByRequestedTime * 0.65) * 1.5 * $numberOfDays;
 
   return $data;
 }
