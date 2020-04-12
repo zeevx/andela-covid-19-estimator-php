@@ -4,11 +4,9 @@ function covid19ImpactEstimator($data)
 {
 
   class impact{
-    public $impact = "";
   }
 
   class severeImpact{
-    public $severeImpact = "";
   }
 
 
