@@ -47,9 +47,9 @@ function covid19ImpactEstimator($data)
 
   $spower = $numberOfDays / 3;
 
-  $impact->infectionsByRequestedTime = $data['currentlyInfected'] * (2**$ipower);
+  $impact->infectionsByRequestedTime = $impact->currentlyInfected * (2**$ipower);
 
-  $severeImpact->infectionsByRequestedTime = $data['currentlyInfected'] * (2**$spower);
+  $severeImpact->infectionsByRequestedTime = $severeImpact->currentlyInfected * (2**$spower);
 
   $impact->severeCasesByRequestedTime = 0.15 * $impact->infectionsByRequestedTime;
 
