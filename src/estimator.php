@@ -25,7 +25,8 @@ function covid19ImpactEstimator($data)
 
   $severeImpact = new SevereImpact();
 
-  
+  $this->assertArrayHasKey('impact', $data);
+
   if ($data['periodType'] == "days") {
     $numberOfDays = $data['timeToElapse'];
   } 
