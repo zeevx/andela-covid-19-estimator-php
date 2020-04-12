@@ -73,5 +73,4 @@ function covid19ImpactEstimator($data)
 
   $severeImpact->dollarsInFlight = ($severeImpact->infectionsByRequestedTime * 0.65) * 1.5 * $numberOfDays;
 
-  return $data;
 }
