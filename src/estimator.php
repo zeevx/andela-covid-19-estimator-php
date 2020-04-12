@@ -1,28 +1,11 @@
 <?php
 
+require_once __DIR__.'/impact.php';
+
+require_once __DIR__.'/severeImpact.php';
+
 function covid19ImpactEstimator($data)
 {
-
-  class Impact{
-    protected $currentlyInfected = '';
-    protected $infectionsByRequestedTime = '';
-    protected $severeCasesByRequestedTime = '';
-    protected $hospitalBedsByRequestedTime = '';
-    protected $casesForICUByRequestedTime = '';
-    protected $casesForVentilatorsByRequestedTime = '';
-    protected $dollarsInFlight = '';
-  }
-
-
-  class SevereImpact{
-    protected $currentlyInfected = '';
-    protected $infectionsByRequestedTime = '';
-    protected $severeCasesByRequestedTime = '';
-    protected $hospitalBedsByRequestedTime = '';
-    protected $casesForICUByRequestedTime = '';
-    protected $casesForVentilatorsByRequestedTime = '';
-    protected $dollarsInFlight = '';
-  }
 
   $impact = new Impact();
 
