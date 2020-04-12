@@ -4,15 +4,29 @@ function covid19ImpactEstimator($data)
 {
 
   class Impact{
+    protected $currentlyInfected = '';
+    protected $infectionsByRequestedTime = '';
+    protected $severeCasesByRequestedTime = '';
+    protected $hospitalBedsByRequestedTime = '';
+    protected $casesForICUByRequestedTime = '';
+    protected $casesForVentilatorsByRequestedTime = '';
+    protected $dollarsInFlight = '';
   }
 
 
-  class severeImpact{
+  class SevereImpact{
+    protected $currentlyInfected = '';
+    protected $infectionsByRequestedTime = '';
+    protected $severeCasesByRequestedTime = '';
+    protected $hospitalBedsByRequestedTime = '';
+    protected $casesForICUByRequestedTime = '';
+    protected $casesForVentilatorsByRequestedTime = '';
+    protected $dollarsInFlight = '';
   }
 
   $impact = new Impact();
 
-  $severeImpact = new severeImpact();
+  $severeImpact = new SevereImpact();
 
 
   if ($data->periodType == "days") {
@@ -21,8 +35,11 @@ function covid19ImpactEstimator($data)
   else if ($data->periodType == "weeks") {
     $numberOfDays = 7 * $data->timeToElapse;
   }
-  if ($data->periodType == "months") {
+  else if ($data->periodType == "months") {
     $numberOfDays = 30 * $data->timeToElapse;
+  }
+  else{
+    return 'period types include days,weeks and months';
   }
 
   $impact->currentlyInfected = $data->reportedCases * 10;
